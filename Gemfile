@@ -34,10 +34,25 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'rspec-rails', '~> 3.6.0'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
+
+group :test do
+  gem 'json_spec' # RSpec, Cucumber で json を検証しやすくするマッチャー集
+  gem 'rspec-retry' # ランダムで落ちるテストを自動でリトライさせるやつ
+  gem 'rspec-its' # RSpec 3.x 以降でも `its` を使えるようにする
+  gem 'rspec-collection_matchers' # Collection 向けの便利なマッチャー集
+  gem 'rspec', '~> 3.6.0'
+  gem 'rspec-activemodel-mocks' # rspec-mocks に `stub_model` と `mock_model` を追加する
+  gem 'rspec_junit_formatter', '~> 0.3.0' # RSpecのレポート出力結果をJUnit形式にする
+  gem 'rspec-parameterized' # rspec でパラメタライズドテストするための gem
+end
+
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
