@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'rspec-rails', '~> 3.6.0'
+#ログイン認証機能
+gem 'devise'
 
 
 group :development, :test do
