@@ -18,3 +18,5 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+#メールアドレス記載しているので一時的に除外。gemの「config」で対応後、除外解除
+/config/environments/development.rb

@@ -37,6 +37,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rspec-rails', '~> 3.6.0'
 #ログイン認証機能
 gem 'devise'
+#他サイトのとの連携した認証に必要
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 
 group :development, :test do
