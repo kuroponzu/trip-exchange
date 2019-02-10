@@ -56,6 +56,10 @@ group :test do
   gem 'rspec-activemodel-mocks' # rspec-mocks に `stub_model` と `mock_model` を追加する
   gem 'rspec_junit_formatter', '~> 0.3.0' # RSpecのレポート出力結果をJUnit形式にする
   gem 'rspec-parameterized' # rspec でパラメタライズドテストするための gem
+  gem 'byebug'
+  gem 'pry-byebug' # pry に byebug を組み込むやつ。pry 上で `step`, `next`, `finish`, `continue` そして `break` コマンドが使えるようになります。
+  gem 'pry-doc', require: false # pry 上から RDoc やソースが読めるようになるやつ。 pry 上で `show-doc`, `show-source` コマンドが使えるようになります。
+  gem 'pry-stack_explorer' # pry 上でスタックを移動できるようにするやつ。 pry 上で `up`, `down`, `frame` そして `show-stack` コマンドが使えるようになります。
 end
 
 
