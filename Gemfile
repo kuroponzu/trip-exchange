@@ -46,6 +46,10 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'annotate'
 #マテリアルデザインをベースにしたcssのフレームワーク
 gem 'materialize-sass'
+#'materialize-sass'のアイコンを使えるようにするためのgem
+gem 'material_icons'
+#Autoprefixer doesn’t support Node v4.8.2.対応
+gem 'mini_racer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

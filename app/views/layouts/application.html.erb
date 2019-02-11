@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>TripExchange</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <header>
       <nav>
-      <% if user_signed_in? %>
-        <strong><%= link_to current_user.email, root_path %></strong>
-        <%= link_to 'パスワード変更', edit_user_registration_path %>
-        <%= link_to 'プロフィール作成(一時的に作成)', new_user_profile_path%>
-        <%= link_to 'プロフィール変更', edit_user_profile_path(id: current_user.id) %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'サインアップ', new_user_registration_path %>
-        <%= link_to 'ログイン', new_user_session_path %>
-      <% end %>
+        <div class="nav-wrapper">
+          <a href='' class='brand-log'>Trip Exchange</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if user_signed_in? %>
+              <li><strong><%= link_to current_user.email, root_path %></strong></li>
+              <li><%= link_to 'パスワード変更', edit_user_registration_path %></li>
+              <li><%= link_to 'プロフィール作成(一時的に作成)', new_user_profile_path%></li>
+              <li><%= link_to 'プロフィール変更', edit_user_profile_path(id: current_user.id) %></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+              <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
       </nav>
     </header>
 

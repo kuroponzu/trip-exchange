@@ -1,51 +1,53 @@
-<%= form_with(model: user_profile, local: true) do |form| %>
-  <% if user_profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_profile.errors.count, "error") %> prohibited this user_profile from being saved:</h2>
+<div class='container'>
+  <%= form_with(model: user_profile, local: true) do |form| %>
+    <% if user_profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user_profile.errors.count, "error") %> prohibited this user_profile from being saved:</h2>
 
-      <ul>
-      <% user_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+        <ul>
+        <% user_profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= hidden_field_tag :user_id, current_user.id %>
+
+        <div class="field">
+          <%= form.label :name, '名前' %>
+          <%= form.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= form.label :birthday, '誕生日' %>
+          <%= form.date_select :birthday %>
+        </div>
+
+        <div class="field">
+          <%= form.label :sex, '性別' %>
+          <%= form.radio_button :sex, 'man' %>男性
+          <%= form.radio_button :sex, 'woman' %>女性
+          <%= form.radio_button :sex, 'unknown' %>不明
+        </div>
+
+        <div class="field">
+          <%= form.label :address, '住んでいる都道府県' %>
+          <%= form.text_field :address %>
+        </div>
+
+        <div class="field">
+          <%= form.label :tag_list, '行ったことのある国' %>
+          <%= form.text_field :tag_list, value: @user_profile.tag_list.join(','), class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :introduce, '自己紹介' %>
+          <%= form.text_area :introduce %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit %>
+        </div>
   <% end %>
-
-  <%= hidden_field_tag :user_id, current_user.id %>
-
-      <div class="field">
-        <%= form.label :name, '名前' %>
-        <%= form.text_field :name %>
-      </div>
-
-      <div class="field">
-        <%= form.label :birthday, '誕生日' %>
-        <%= form.date_select :birthday %>
-      </div>
-
-      <div class="field">
-        <%= form.label :sex, '性別' %>
-        <%= form.radio_button :sex, 'man' %>男性
-        <%= form.radio_button :sex, 'woman' %>女性
-        <%= form.radio_button :sex, 'unknown' %>不明
-      </div>
-
-      <div class="field">
-        <%= form.label :address, '住んでいる都道府県' %>
-        <%= form.text_field :address %>
-      </div>
-
-      <div class="field">
-        <%= form.label :tag_list, '行ったことのある国' %>
-        <%= form.text_field :tag_list, value: @user_profile.tag_list.join(','), class: "form-control" %>
-      </div>
-
-      <div class="field">
-        <%= form.label :introduce, '自己紹介' %>
-        <%= form.text_area :introduce %>
-      </div>
-
-      <div class="actions">
-        <%= form.submit %>
-      </div>
-<% end %>
+</div>
