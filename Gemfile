@@ -40,6 +40,8 @@ gem 'devise'
 #他サイトのとの連携した認証に必要
 gem 'omniauth'
 gem 'omniauth-twitter'
+#動的なタグ付け
+gem 'acts-as-taggable-on', '~> 6.0'
 
 
 group :development, :test do

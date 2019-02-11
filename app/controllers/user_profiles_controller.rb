@@ -71,7 +71,7 @@ class UserProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
       user_id = params.permit(:user_id)
-      params.require(:user_profile).permit(:name, :birthday, :sex, :address, :introduce).
+      params.require(:user_profile).permit(:name, :birthday, :sex, :address, :introduce, :tag_list).
         merge(user_id)
     end
 end
