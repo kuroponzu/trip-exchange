@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Bundle実行のためのDocker Composeラッパー
+#
+
+compose_run_opts="--rm"
+rails_opts=""
+
+docker-compose run ${compose_run_opts} \
+  -e RAILS_ENV=${RAILS_ENV:-development} \
+  rails bundle "$@" ${rails_opts}

@@ -42,7 +42,10 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 #動的なタグ付け
 gem 'acts-as-taggable-on', '~> 6.0'
-
+#スキーマ情報をファイルの先頭に記載してくれる
+gem 'annotate'
+#マテリアルデザインをベースにしたcssのフレームワーク
+gem 'materialize-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

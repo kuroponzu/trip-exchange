@@ -1,4 +1,4 @@
-/log
+gi/log
 /tmp
 !/log/.keep
 !/tmp/.keep
