@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Rails実行のためのDocker Composeラッパー
+#
+
+compose_run_opts="--rm"
+rails_opts=""
+
+case $1 in
+s|server)
+# server時はホストOSからアクセスできるようにDockerのポートバインドを有効にする。
+compose_run_opts="${compose_run_opts} --service-ports"
+# ホストOSからアクセスできるようにListenするIPアドレスを0.0.0.0にする。
+# ボリュームマウントした場所にPIDファイルが残存すると起動チェックに引っ掛かるため、コンテナ内に置く。
+rails_opts="-b 0.0.0.0 --pid /var/run/lock/server.pid"
+;;
+esac
+
+docker-compose run ${compose_run_opts} \
+  -e RAILS_ENV=${RAILS_ENV:-development} \
+  rails bundle exec rails "$@" ${rails_opts}

@@ -1,6 +1,5 @@
 class UserProfilesController < ApplicationController
   before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
-  require 'pry'
 
   # GET /user_profiles
   # GET /user_profiles.json
@@ -20,17 +19,17 @@ class UserProfilesController < ApplicationController
 
   # GET /user_profiles/1/edit
   def edit
+    @user_profile = UserProfile.find(current_user.id)
   end
 
   # POST /user_profiles
   # POST /user_profiles.json
   def create
     @user_profile = UserProfile.new(user_profile_params)
-    binding.pry
 
     respond_to do |format|
       if @user_profile.save
-        format.html { redirect_to @user_profile, notice: 'User profile was successfully created.' }
+        format.html { redirect_to @user_profile, notice: 'プロフィールの作成が完了しました。' }
         format.json { render :show, status: :created, location: @user_profile }
       else
         format.html { render :new }
@@ -44,7 +43,7 @@ class UserProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @user_profile.update(user_profile_params)
-        format.html { redirect_to @user_profile, notice: 'User profile was successfully updated.' }
+        format.html { redirect_to @user_profile, notice: 'プロフィールのアップデートが完了しました。' }
         format.json { render :show, status: :ok, location: @user_profile }
       else
         format.html { render :edit }
@@ -71,6 +70,8 @@ class UserProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
-      params.require(:user_profile).permit(:name, :birthday, :address, :introduce)
+      user_id = params.permit(:user_id)
+      params.require(:user_profile).permit(:name, :birthday, :sex, :address, :introduce).
+        merge(user_id)
     end
 end
